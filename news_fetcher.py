@@ -1,6 +1,7 @@
 
 import requests
 import json
+import os
 
 def get_ai_news():
     url = "https://newsapi.org/v2/everything"
@@ -9,6 +10,9 @@ def get_ai_news():
         'language': 'en',
         'sortBy': 'publishedAt',
         'apiKey': "YOUR_NEWSAPI_KEY"
+       
+        api_key = os.getenv("NEWSAPI_KEY")
+
     }
     response = requests.get(url, params=params)
     articles = response.json().get("articles", [])
